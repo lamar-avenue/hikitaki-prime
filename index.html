@@ -35,24 +35,8 @@
       margin: 0;
       color: var(--text);
       font-family: Inter, "Segoe UI", Arial, sans-serif;
-      background:
-        radial-gradient(circle at 18% 14%, rgba(58, 42, 52, 0.24), transparent 34%),
-        radial-gradient(circle at 82% 18%, rgba(39, 45, 58, 0.24), transparent 38%),
-        linear-gradient(135deg, #0b0b0f 0%, #11141c 52%, #1a1012 100%);
+      background: linear-gradient(180deg, #09090c 0%, #101116 48%, #0d0d11 100%);
       overflow-x: hidden;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-      pointer-events: none;
-      background:
-        radial-gradient(circle at 24% 32%, rgba(74, 54, 64, 0.16), transparent 42%),
-        radial-gradient(circle at 72% 68%, rgba(37, 41, 51, 0.22), transparent 46%),
-        radial-gradient(circle at 48% 86%, rgba(88, 67, 42, 0.12), transparent 48%);
-      opacity: 0.72;
     }
 
     .page {
@@ -65,7 +49,6 @@
 
     .hero {
       position: relative;
-      isolation: isolate;
       overflow: hidden;
       width: 100%;
       min-height: 100svh;
@@ -74,31 +57,6 @@
       justify-content: center;
       padding: clamp(24px, 5vw, 64px);
       text-align: center;
-    }
-
-    .hero::before,
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-    }
-
-    .hero::before {
-      z-index: -2;
-      background:
-        radial-gradient(circle at 24% 28%, rgba(82, 56, 65, 0.22), transparent 42%),
-        radial-gradient(circle at 78% 30%, rgba(44, 50, 64, 0.22), transparent 46%),
-        radial-gradient(circle at 52% 78%, rgba(156, 119, 65, 0.11), transparent 50%),
-        linear-gradient(145deg, rgba(11, 11, 15, 0.08), rgba(18, 19, 23, 0.22) 62%, rgba(11, 11, 15, 0) 100%);
-    }
-
-    .hero::after {
-      z-index: -1;
-      background:
-        radial-gradient(circle at 50% 40%, rgba(242, 242, 240, 0.055), transparent 42%),
-        linear-gradient(180deg, rgba(11, 11, 15, 0.06) 0%, rgba(11, 11, 15, 0.22) 56%, rgba(11, 11, 15, 0) 100%);
-      opacity: 0.82;
     }
 
     .hero-inner {
@@ -121,9 +79,6 @@
       line-height: 0.95;
       max-width: 920px;
       margin: 0 auto;
-      text-shadow:
-        0 2px 0 rgba(255, 255, 255, 0.02),
-        0 28px 80px rgba(0, 0, 0, 0.48);
     }
 
     .hero h1 span {
@@ -135,7 +90,6 @@
       color: var(--gold);
       font-size: clamp(30px, 4vw, 52px);
       font-weight: 800;
-      text-shadow: 0 14px 42px rgba(0, 0, 0, 0.34);
     }
 
     .scroll-hint {
@@ -160,7 +114,6 @@
 
     .characters {
       width: 100%;
-      margin-top: -1px;
       padding: clamp(64px, 8vw, 112px) clamp(20px, 4vw, 48px) clamp(64px, 8vw, 112px);
     }
 
@@ -321,15 +274,6 @@
         linear-gradient(145deg, rgba(255, 255, 255, 0.035), transparent 42%),
         var(--surface-strong);
       box-shadow: 0 30px 90px rgba(0, 0, 0, 0.34);
-    }
-
-    .gift-panel::before {
-      content: "";
-      display: block;
-      width: 64px;
-      height: 1px;
-      margin: 0 auto 24px;
-      background: linear-gradient(90deg, transparent, rgba(212, 176, 106, 0.58), transparent);
     }
 
     .gift-panel h2 {
@@ -535,12 +479,12 @@
 
           <article class="character-poster is-reversed reveal">
             <div class="character-media">
-              <span class="media-fallback">Ичиго Mugetsu</span>
+              <span class="media-fallback">Ичиго / Mugetsu</span>
               <img src="images/ichigo-mugetsu.jpg" alt="Ичиго в форме Mugetsu" onerror="this.hidden = true;">
             </div>
             <div class="character-content">
-              <span class="character-tag">Mugetsu</span>
-              <h3>Ичиго Mugetsu</h3>
+              <span class="character-tag">Финальная форма Ичиго</span>
+              <h3>Ичиго</h3>
               <p>С днём рождения, Ваня. Желаю тебе мощи, выдержки и момента, когда ты просто выходишь на новый уровень и удивляешь всех.</p>
             </div>
           </article>
