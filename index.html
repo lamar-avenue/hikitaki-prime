@@ -33,10 +33,9 @@
       color: var(--text);
       font-family: Inter, "Segoe UI", Arial, sans-serif;
       background:
-        radial-gradient(circle at 15% 10%, rgba(255, 63, 213, 0.18), transparent 30%),
-        radial-gradient(circle at 82% 18%, rgba(54, 247, 255, 0.16), transparent 28%),
-        radial-gradient(circle at 50% 95%, rgba(184, 255, 69, 0.11), transparent 32%),
-        linear-gradient(180deg, #050509 0%, var(--bg) 52%, #0b0610 100%);
+        radial-gradient(ellipse at 18% 8%, rgba(255, 63, 213, 0.13), transparent 34%),
+        radial-gradient(ellipse at 82% 16%, rgba(54, 247, 255, 0.11), transparent 32%),
+        linear-gradient(180deg, #020205 0%, var(--bg) 52%, #09050e 100%);
       overflow-x: hidden;
     }
 
@@ -44,22 +43,26 @@
       content: "";
       position: fixed;
       inset: 0;
+      z-index: 0;
       pointer-events: none;
-      background-image:
-        linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
-      background-size: 54px 54px;
-      mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), transparent 80%);
+      background:
+        radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.07), transparent 44%),
+        radial-gradient(ellipse at 50% 100%, rgba(255, 63, 213, 0.08), transparent 42%),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.42), transparent 24%, transparent 76%, rgba(0, 0, 0, 0.48));
     }
 
     .page {
       position: relative;
+      z-index: 1;
       width: min(100%, 1080px);
       margin: 0 auto;
       padding: 0 20px 80px;
     }
 
     .hero {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
       min-height: 100vh;
       display: flex;
       align-items: center;
@@ -68,7 +71,38 @@
       text-align: center;
     }
 
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0 calc(50% - 50vw);
+      pointer-events: none;
+    }
+
+    .hero::before {
+      z-index: -2;
+      background:
+        radial-gradient(ellipse at 50% 18%, rgba(255, 255, 255, 0.08), transparent 38%),
+        radial-gradient(circle at 23% 36%, rgba(255, 63, 213, 0.22), transparent 28%),
+        radial-gradient(circle at 78% 28%, rgba(54, 247, 255, 0.16), transparent 30%),
+        radial-gradient(circle at 48% 82%, rgba(255, 209, 102, 0.09), transparent 32%),
+        linear-gradient(135deg, #020205 0%, #070713 42%, #120713 72%, #040406 100%);
+    }
+
+    .hero::after {
+      z-index: -1;
+      background:
+        radial-gradient(circle at 18% 30%, rgba(255, 63, 213, 0.2), transparent 18%),
+        radial-gradient(circle at 82% 22%, rgba(54, 247, 255, 0.16), transparent 20%),
+        radial-gradient(circle at 58% 68%, rgba(184, 255, 69, 0.08), transparent 20%),
+        linear-gradient(180deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.58));
+      filter: blur(22px);
+      opacity: 0.9;
+    }
+
     .hero-inner {
+      position: relative;
+      z-index: 1;
       width: 100%;
     }
 
@@ -423,7 +457,7 @@
         </h1>
 
         <!-- Подпись можно менять здесь -->
-        <p class="hero-subtitle">От братвы</p>
+        <p class="hero-subtitle">От Кирюхи</p>
         <p class="scroll-hint">Листай вниз ↓</p>
       </div>
     </section>
