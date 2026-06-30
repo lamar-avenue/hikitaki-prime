@@ -90,14 +90,14 @@
         radial-gradient(circle at 24% 28%, rgba(82, 56, 65, 0.22), transparent 42%),
         radial-gradient(circle at 78% 30%, rgba(44, 50, 64, 0.22), transparent 46%),
         radial-gradient(circle at 52% 78%, rgba(156, 119, 65, 0.11), transparent 50%),
-        linear-gradient(145deg, rgba(11, 11, 15, 0.08), rgba(18, 19, 23, 0.26));
+        linear-gradient(145deg, rgba(11, 11, 15, 0.08), rgba(18, 19, 23, 0.22) 62%, rgba(11, 11, 15, 0) 100%);
     }
 
     .hero::after {
       z-index: -1;
       background:
         radial-gradient(circle at 50% 40%, rgba(242, 242, 240, 0.055), transparent 42%),
-        linear-gradient(180deg, rgba(11, 11, 15, 0.06), rgba(11, 11, 15, 0.5));
+        linear-gradient(180deg, rgba(11, 11, 15, 0.06) 0%, rgba(11, 11, 15, 0.22) 56%, rgba(11, 11, 15, 0) 100%);
       opacity: 0.82;
     }
 
@@ -107,22 +107,6 @@
       width: 100%;
       max-width: 900px;
       margin: 0 auto;
-    }
-
-    .badge {
-      display: inline-flex;
-      gap: 10px;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 28px;
-      padding: 10px 16px;
-      border: 1px solid rgba(212, 176, 106, 0.18);
-      border-radius: 999px;
-      color: rgba(242, 242, 240, 0.84);
-      background: rgba(18, 19, 23, 0.62);
-      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.24);
-      font-size: 15px;
-      letter-spacing: 0;
     }
 
     h1,
@@ -155,14 +139,29 @@
     }
 
     .scroll-hint {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
       margin-top: 58px;
-      color: rgba(242, 242, 240, 0.52);
+      color: rgba(212, 176, 106, 0.68);
       font-size: 14px;
+      letter-spacing: 0.02em;
+    }
+
+    .scroll-hint::after {
+      content: "";
+      width: 1px;
+      height: 34px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, rgba(212, 176, 106, 0.78), rgba(184, 184, 179, 0));
+      animation: scrollCue 2.2s ease-in-out infinite;
     }
 
     .characters {
       width: 100%;
       padding: clamp(56px, 8vw, 104px) clamp(20px, 4vw, 48px) clamp(48px, 7vw, 90px);
+      margin-top: -1px;
     }
 
     .characters-inner {
@@ -290,7 +289,7 @@
     }
 
     .gift-section {
-      min-height: 86vh;
+      min-height: 76vh;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -310,77 +309,58 @@
       box-shadow: 0 30px 90px rgba(0, 0, 0, 0.34);
     }
 
+    .gift-panel::before {
+      content: "";
+      display: block;
+      width: 64px;
+      height: 1px;
+      margin: 0 auto 24px;
+      background: linear-gradient(90deg, transparent, rgba(212, 176, 106, 0.58), transparent);
+    }
+
     .gift-panel h2 {
       font-size: clamp(30px, 6vw, 64px);
       line-height: 1;
       color: var(--text);
     }
 
+    .gift-subtitle {
+      margin-top: 16px;
+      color: var(--gold);
+      font-size: clamp(18px, 2.5vw, 24px);
+      font-weight: 700;
+    }
+
+    .gift-copy {
+      max-width: 460px;
+      margin: 18px auto 0;
+      color: var(--muted);
+      font-size: clamp(16px, 2vw, 20px);
+      line-height: 1.65;
+      white-space: pre-line;
+    }
+
     .gift-button {
-      position: relative;
-      width: min(78vw, 220px);
-      aspect-ratio: 1;
-      margin: 42px auto 30px;
-      display: grid;
-      place-items: center;
-      border: 0;
-      border-radius: 22px;
-      color: var(--text);
-      background:
-        linear-gradient(90deg, transparent 42%, rgba(242, 242, 240, 0.18) 42% 58%, transparent 58%),
-        linear-gradient(0deg, transparent 44%, rgba(242, 242, 240, 0.16) 44% 57%, transparent 57%),
-        linear-gradient(145deg, #2a211b 0%, #4b3622 48%, #c8a96b 100%);
-      box-shadow:
-        0 28px 70px rgba(0, 0, 0, 0.32),
-        inset 0 -16px 30px rgba(0, 0, 0, 0.18);
+      margin: 34px auto 0;
+      padding: 13px 22px;
+      border: 1px solid rgba(212, 176, 106, 0.28);
+      border-radius: 999px;
+      color: var(--gold);
+      background: rgba(212, 176, 106, 0.07);
+      box-shadow: none;
       cursor: pointer;
       transform: translateZ(0);
-      transition: transform 180ms ease, box-shadow 180ms ease;
-    }
-
-    .gift-button::before,
-    .gift-button::after {
-      content: "";
-      position: absolute;
-      top: -42px;
-      width: 76px;
-      height: 58px;
-      border: 16px solid #d4b06a;
-      border-radius: 50% 50% 8px 50%;
-      filter: drop-shadow(0 14px 20px rgba(0, 0, 0, 0.28));
-    }
-
-    .gift-button::before {
-      left: 42px;
-      transform: rotate(-28deg);
-    }
-
-    .gift-button::after {
-      right: 42px;
-      transform: scaleX(-1) rotate(-28deg);
+      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
     }
 
     .gift-button:hover {
-      transform: translateY(-5px) rotate(-1deg);
-      box-shadow:
-        0 34px 84px rgba(0, 0, 0, 0.38),
-        inset 0 -16px 30px rgba(0, 0, 0, 0.18);
+      transform: translateY(-2px);
+      border-color: rgba(212, 176, 106, 0.46);
+      background: rgba(212, 176, 106, 0.1);
     }
 
     .gift-button:active {
-      transform: translateY(1px) scale(0.98);
-    }
-
-    .gift-emoji {
-      position: relative;
-      z-index: 1;
-      font-size: 64px;
-      text-shadow: 0 12px 28px rgba(0, 0, 0, 0.32);
-    }
-
-    .open-label {
-      color: var(--muted);
-      font-size: clamp(17px, 2.3vw, 21px);
+      transform: translateY(0) scale(0.98);
     }
 
     .final-message {
@@ -388,7 +368,7 @@
       gap: 8px;
       min-height: 84px;
       place-items: center;
-      margin-top: 22px;
+      margin-top: 24px;
       opacity: 0;
       transform: translateY(16px);
       transition: opacity 420ms ease, transform 420ms ease;
@@ -401,37 +381,24 @@
 
     .final-message strong {
       color: var(--gold);
-      font-size: clamp(28px, 5vw, 54px);
+      font-size: clamp(24px, 4vw, 38px);
     }
 
     .final-message span {
       color: var(--text);
-      font-size: clamp(18px, 2.8vw, 25px);
+      font-size: clamp(17px, 2.3vw, 22px);
     }
 
-    .particle {
-      position: fixed;
-      left: var(--x);
-      top: var(--y);
-      width: var(--size);
-      height: var(--size);
-      pointer-events: none;
-      border-radius: 50%;
-      background: var(--color);
-      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.26);
-      animation: burst 900ms ease-out forwards;
-      z-index: 20;
-    }
-
-    @keyframes burst {
-      from {
-        opacity: 1;
-        transform: translate(-50%, -50%) translate(0, 0) scale(1) rotate(0deg);
+    @keyframes scrollCue {
+      0%,
+      100% {
+        opacity: 0.42;
+        transform: translateY(-4px);
       }
 
-      to {
-        opacity: 0;
-        transform: translate(-50%, -50%) translate(var(--dx), var(--dy)) scale(0.35) rotate(240deg);
+      50% {
+        opacity: 0.9;
+        transform: translateY(6px);
       }
     }
 
@@ -457,10 +424,6 @@
         padding: 0;
       }
 
-      .badge {
-        font-size: 14px;
-      }
-
       .hero {
         min-height: 100svh;
       }
@@ -482,14 +445,6 @@
         min-height: 220px;
         border-radius: 16px;
       }
-
-      .gift-button::before {
-        left: 32px;
-      }
-
-      .gift-button::after {
-        right: 32px;
-      }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -508,17 +463,16 @@
   <main class="page">
     <section class="hero" aria-label="Главное поздравление">
       <div class="hero-inner">
-        <div class="badge">🎁 🎉 🖤 ⚡</div>
-
         <!-- Главный текст можно менять здесь -->
         <h1>
           <span>Ваня,</span>
-          <span>с днём рождения</span>
+          <span>с днём</span>
+          <span>рождения</span>
         </h1>
 
         <!-- Подпись можно менять здесь -->
         <p class="hero-subtitle">От Кирюхи</p>
-        <p class="scroll-hint">Листай вниз ↓</p>
+        <p class="scroll-hint">Листай вниз</p>
       </div>
     </section>
 
@@ -580,20 +534,19 @@
       </div>
     </section>
 
-    <section class="gift-section" aria-label="Подарок">
+    <section class="gift-section" aria-label="Продолжение следует">
       <div class="gift-panel reveal">
-        <h2>Финальный подарок</h2>
+        <h2>Продолжение следует</h2>
+        <p class="gift-subtitle">Подарок ещё не раскрыт.</p>
+        <p class="gift-copy">Не всё сразу, Ваня.
+Кирюха кое-что готовит.</p>
 
-        <button class="gift-button" id="giftButton" type="button" aria-label="Открыть подарок">
-          <span class="gift-emoji">🎁</span>
-        </button>
-
-        <p class="open-label">Нажми, чтобы открыть подарок</p>
+        <button class="gift-button" id="giftButton" type="button">Открыть позже</button>
 
         <!-- Финальное сообщение можно менять здесь -->
         <div class="final-message" id="finalMessage" aria-live="polite">
-          <strong>Подарок скоро...</strong>
-          <span>Мы кое-что готовим.</span>
+          <strong>Скоро.</strong>
+          <span>Тут будет то самое.</span>
         </div>
       </div>
     </section>
@@ -618,39 +571,9 @@
 
     const giftButton = document.getElementById("giftButton");
     const finalMessage = document.getElementById("finalMessage");
-    const colors = ["#d4b06a", "#c8a96b", "#f2f2f0", "#8a8174", "#5f4b36"];
-
-    function createParticle(x, y) {
-      const particle = document.createElement("span");
-      const angle = Math.random() * Math.PI * 2;
-      const distance = 70 + Math.random() * 150;
-      const size = 6 + Math.random() * 10;
-
-      particle.className = "particle";
-      particle.style.setProperty("--x", `${x}px`);
-      particle.style.setProperty("--y", `${y}px`);
-      particle.style.setProperty("--dx", `${Math.cos(angle) * distance}px`);
-      particle.style.setProperty("--dy", `${Math.sin(angle) * distance}px`);
-      particle.style.setProperty("--size", `${size}px`);
-      particle.style.setProperty("--color", colors[Math.floor(Math.random() * colors.length)]);
-
-      document.body.appendChild(particle);
-      particle.addEventListener("animationend", () => particle.remove());
-    }
-
-    function launchConfetti() {
-      const rect = giftButton.getBoundingClientRect();
-      const x = rect.left + rect.width / 2;
-      const y = rect.top + rect.height / 2;
-
-      for (let i = 0; i < 70; i += 1) {
-        window.setTimeout(() => createParticle(x, y), i * 8);
-      }
-    }
 
     giftButton.addEventListener("click", () => {
       finalMessage.classList.add("is-open");
-      launchConfetti();
     });
   </script>
 </body>
