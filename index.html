@@ -24,18 +24,18 @@
     }
 
     html {
+      width: 100%;
       scroll-behavior: smooth;
+      overflow-x: hidden;
     }
 
     body {
       min-height: 100vh;
+      width: 100%;
       margin: 0;
       color: var(--text);
       font-family: Inter, "Segoe UI", Arial, sans-serif;
-      background:
-        radial-gradient(ellipse at 18% 8%, rgba(255, 63, 213, 0.13), transparent 34%),
-        radial-gradient(ellipse at 82% 16%, rgba(54, 247, 255, 0.11), transparent 32%),
-        linear-gradient(180deg, #020205 0%, var(--bg) 52%, #09050e 100%);
+      background: linear-gradient(135deg, #070812 0%, #0b1020 48%, #15101d 100%);
       overflow-x: hidden;
     }
 
@@ -46,9 +46,13 @@
       z-index: 0;
       pointer-events: none;
       background:
-        radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.07), transparent 44%),
-        radial-gradient(ellipse at 50% 100%, rgba(255, 63, 213, 0.08), transparent 42%),
-        linear-gradient(90deg, rgba(0, 0, 0, 0.42), transparent 24%, transparent 76%, rgba(0, 0, 0, 0.48));
+        radial-gradient(circle at 20% 24%, rgba(120, 65, 120, 0.18), transparent 42%),
+        radial-gradient(circle at 80% 20%, rgba(48, 74, 112, 0.14), transparent 46%),
+        radial-gradient(circle at 50% 82%, rgba(180, 110, 55, 0.1), transparent 50%);
+      filter: blur(16px);
+      opacity: 0.82;
+      transform: translate3d(0, 0, 0) scale(1.02);
+      animation: ambientGlow 18s ease-in-out infinite alternate;
     }
 
     .page {
@@ -63,11 +67,12 @@
       position: relative;
       isolation: isolate;
       overflow: hidden;
-      min-height: 100vh;
+      width: 100%;
+      min-height: 100svh;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 80px 0 48px;
+      padding: clamp(24px, 5vw, 64px);
       text-align: center;
     }
 
@@ -75,35 +80,35 @@
     .hero::after {
       content: "";
       position: absolute;
-      inset: 0 calc(50% - 50vw);
+      inset: 0;
       pointer-events: none;
     }
 
     .hero::before {
       z-index: -2;
       background:
-        radial-gradient(ellipse at 50% 18%, rgba(255, 255, 255, 0.08), transparent 38%),
-        radial-gradient(circle at 23% 36%, rgba(255, 63, 213, 0.22), transparent 28%),
-        radial-gradient(circle at 78% 28%, rgba(54, 247, 255, 0.16), transparent 30%),
-        radial-gradient(circle at 48% 82%, rgba(255, 209, 102, 0.09), transparent 32%),
-        linear-gradient(135deg, #020205 0%, #070713 42%, #120713 72%, #040406 100%);
+        radial-gradient(circle at 24% 32%, rgba(106, 63, 112, 0.2), transparent 44%),
+        radial-gradient(circle at 78% 24%, rgba(42, 72, 110, 0.13), transparent 48%),
+        radial-gradient(circle at 54% 78%, rgba(242, 198, 109, 0.09), transparent 52%),
+        linear-gradient(145deg, rgba(7, 8, 18, 0.2), rgba(26, 16, 36, 0.18));
+      transform: translate3d(0, 0, 0) scale(1.02);
+      animation: heroGlow 22s ease-in-out infinite alternate;
     }
 
     .hero::after {
       z-index: -1;
       background:
-        radial-gradient(circle at 18% 30%, rgba(255, 63, 213, 0.2), transparent 18%),
-        radial-gradient(circle at 82% 22%, rgba(54, 247, 255, 0.16), transparent 20%),
-        radial-gradient(circle at 58% 68%, rgba(184, 255, 69, 0.08), transparent 20%),
-        linear-gradient(180deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.58));
-      filter: blur(22px);
-      opacity: 0.9;
+        radial-gradient(circle at 50% 38%, rgba(255, 247, 255, 0.08), transparent 46%),
+        linear-gradient(180deg, rgba(7, 8, 18, 0.12), rgba(7, 8, 18, 0.4));
+      opacity: 0.74;
     }
 
     .hero-inner {
       position: relative;
       z-index: 1;
       width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
     }
 
     .badge {
@@ -113,11 +118,12 @@
       justify-content: center;
       margin-bottom: 28px;
       padding: 10px 16px;
-      border: 1px solid rgba(54, 247, 255, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.12);
       border-radius: 999px;
-      color: var(--cyan);
-      background: rgba(54, 247, 255, 0.07);
-      box-shadow: 0 0 28px var(--shadow-cyan);
+      color: rgba(255, 247, 255, 0.82);
+      background: rgba(17, 24, 39, 0.42);
+      box-shadow: 0 18px 60px rgba(0, 0, 0, 0.28), 0 0 24px rgba(242, 198, 109, 0.08);
+      backdrop-filter: blur(12px);
       font-size: 15px;
       letter-spacing: 0;
     }
@@ -129,13 +135,14 @@
     }
 
     .hero h1 {
-      font-size: clamp(46px, 9vw, 116px);
+      color: #fff7ff;
+      font-size: clamp(56px, 8vw, 112px);
       line-height: 0.95;
       max-width: 920px;
       margin: 0 auto;
       text-shadow:
-        0 0 18px rgba(255, 63, 213, 0.45),
-        0 0 54px rgba(54, 247, 255, 0.22);
+        0 0 22px rgba(255, 247, 255, 0.16),
+        0 28px 80px rgba(0, 0, 0, 0.5);
     }
 
     .hero h1 span {
@@ -144,15 +151,15 @@
 
     .hero-subtitle {
       margin-top: 24px;
-      color: var(--gold);
-      font-size: clamp(24px, 4.6vw, 54px);
+      color: #ffd36a;
+      font-size: clamp(30px, 4vw, 52px);
       font-weight: 800;
-      text-shadow: 0 0 24px rgba(255, 209, 102, 0.35);
+      text-shadow: 0 0 28px rgba(255, 211, 106, 0.24), 0 10px 36px rgba(0, 0, 0, 0.38);
     }
 
     .scroll-hint {
       margin-top: 58px;
-      color: var(--muted);
+      color: rgba(247, 244, 255, 0.58);
       font-size: 14px;
       animation: floatHint 1.8s ease-in-out infinite;
     }
@@ -382,6 +389,30 @@
       }
     }
 
+    @keyframes ambientGlow {
+      from {
+        opacity: 0.72;
+        transform: translate3d(-10px, -8px, 0) scale(1.02);
+      }
+
+      to {
+        opacity: 0.88;
+        transform: translate3d(12px, 10px, 0) scale(1.06);
+      }
+    }
+
+    @keyframes heroGlow {
+      from {
+        opacity: 0.82;
+        transform: translate3d(-8px, 6px, 0) scale(1.02);
+      }
+
+      to {
+        opacity: 0.96;
+        transform: translate3d(8px, -6px, 0) scale(1.05);
+      }
+    }
+
     @keyframes burst {
       from {
         opacity: 1;
@@ -420,7 +451,11 @@
       }
 
       .hero {
-        min-height: 94vh;
+        min-height: 100svh;
+      }
+
+      .hero h1 {
+        font-size: clamp(42px, 13vw, 56px);
       }
 
       .gift-button::before {
